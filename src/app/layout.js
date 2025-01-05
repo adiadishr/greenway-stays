@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={cn(inter.variable, cormorantGaramaond.variable, "antialiased")}
+        className={cn(inter.variable, cormorantGaramaond.variable, "antialiased selection:bg-primary selection:text-white")}
       >
         {children}
       </body>

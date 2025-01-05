@@ -50,32 +50,24 @@ export const data = [
     {
         category: "Artificial Intelligence",
         title: "You can do more with AI.",
-        src: "/exterior.jpg",
+        src: "/exterior.png",
     },
     {
         category: "Productivity",
         title: "Enhance your productivity.",
-        src: "/exterior.jpg",
+        src: "/exterior.png",
     },
     {
         category: "Product",
         title: "Launching the new Apple Vision Pro.",
-        src: "/exterior.jpg",
+        src: "/exterior.png",
     },
 
     {
         category: "Product",
         title: "Maps for your iPhone 15 Pro Max.",
-        src: "/exterior.jpg",
-    },
-    {
-        category: "iOS",
-        title: "Photography just got better.",
-        src: "/exterior.jpg",
-    },
-    {
-        category: "Hiring",
-        title: "Hiring for a Staff Software Engineer",
-        src: "/exterior.jpg",
+        src: "/exterior.png",
     },
 ];
+
+

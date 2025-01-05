@@ -2,12 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.green {
-  color: hsl(193, 78%, 4%);
-  background-color: hsl(208, 10%, 66%);
-  border-color: hsl(75, 16%, 20%);
-}
-
 @layer base {
   :root {
     --background: 0 0% 100%;
