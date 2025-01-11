@@ -61,7 +61,7 @@ export default function Menu({ nav, onClick }) {
                                 </Link>
                             );
                         })}
-                        <div className="flex text-sm md:hidden">
+                        <div className="flex text-base md:hidden">
                             Uxbridge, West London <br />
                             +421 45 530 00 00, email@email.com
                         </div>

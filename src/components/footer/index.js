@@ -11,9 +11,7 @@ export default function Footer() {
         >
             <div className='fixed bottom-0 flex w-full h-screen'>
                 {/* Left Pane */}
-                <div
-                    className="relative flex flex-col w-full h-full md:w-7/12 bg-neutral-900"
-                >
+                <div className="relative flex flex-col w-full h-full md:w-7/12 bg-neutral-900">
                     <div className="z-50 flex items-center h-full pl-12 font-serif text-3xl font-medium md:text-5xl md:pl-24 text-white/80">
                         <div className="flex flex-col gap-8">
                             <Link href="/" className="relative z-[60] -top-8 w-max h-32 -left-8 overflow-visible">
@@ -37,7 +35,7 @@ export default function Footer() {
                                     </Link>
                                 );
                             })}
-                            <div className="flex text-sm md:hidden">
+                            <div className="flex text-base md:hidden">
                                 Uxbridge, West London <br />
                                 +421 45 530 00 00, email@email.com
                             </div>
@@ -46,7 +44,8 @@ export default function Footer() {
                 </div>
 
                 {/* Right Pane */}
-                <div className="hidden md:flex flex-col items-center justify-center w-5/12 font-sans text-black duration-1000 bg-white hover:w-[45%]">
+                <div className="hidden md:flex flex-col items-center justify-center w-5/12 font-sans text-black duration-1000 bg-transparent hover:w-[45%] relative">
+                    <Image fill src="/bg.png" alt='Decorative background' className='object-cover opacity-5 -z-10' />
                     <div className="flex w-full px-16 mb-12">
                         <div className="relative w-full px-4 overflow-hidden h-80">
                             <Image
