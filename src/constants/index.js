@@ -1,73 +1,42 @@
-export const products = [
+export const rooms = [
     {
-        title: "Greenway Stays",
-        thumbnail: "/exterior.png",
-        link: "/",
+        category: "Stardard Family Room",
+        src: "/rooms/family.jpg",
     },
     {
-        title: "Baasdg",
-        thumbnail: "/exterior.png",
-        link: "/",
+        category: "Standard Twin - Shared",
+        src: "/rooms/twin.jpg",
     },
     {
-        title: "Saf",
-        thumbnail: "/exterior.png",
-        link: "/",
+        category: "Standard Double",
+        src: "/rooms/double.jpg",
     },
+
     {
-        title: "Greenway1 Stays",
-        thumbnail: "/exterior.png",
-        link: "/",
-    },
-    {
-        title: "Baasdg2",
-        thumbnail: "/exterior.png",
-        link: "/",
-    },
-    {
-        title: "Sa3f",
-        thumbnail: "/exterior.png",
-        link: "/",
-    },
-    {
-        title: "Greenwa4y Stays",
-        thumbnail: "/exterior.png",
-        link: "/",
-    },
-    {
-        title: "Baa5sdg",
-        thumbnail: "/exterior.png",
-        link: "/",
-    },
-    {
-        title: "Sa6f",
-        thumbnail: "/exterior.png",
-        link: "/",
+        category: "Standard Single -Shared",
+        src: "/rooms/single.jpg",
     },
 ];
 
-export const data = [
+export const links = [
     {
-        category: "Artificial Intelligence",
-        title: "You can do more with AI.",
-        src: "/exterior.png",
+        slug: "rooms",
+        name: "Rooms",
     },
     {
-        category: "Productivity",
-        title: "Enhance your productivity.",
-        src: "/exterior.png",
+        slug: "about",
+        name: "About Us",
     },
     {
-        category: "Product",
-        title: "Launching the new Apple Vision Pro.",
-        src: "/exterior.png",
+        slug: "gallery",
+        name: "Gallery",
     },
-
     {
-        category: "Product",
-        title: "Maps for your iPhone 15 Pro Max.",
-        src: "/exterior.png",
+        slug: "contact",
+        name: "Contact",
+    },
+    {
+        slug: "booking",
+        name: "Book your stay",
     },
 ];
-
-

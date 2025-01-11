@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.color {
+  color: hsl(76, 38%, 33%)
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -10,7 +14,7 @@
     --card-foreground: 0 0% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 3.9%;
-    --primary: 76 15% 29%;
+    --primary: 76 38% 33;
     --primary-foreground: 0 0% 98%;
     --secondary: 75 16% 20%;
     --secondary-foreground: 0 0% 9%;
@@ -31,6 +35,7 @@
     --radius: 0.5rem;
     --black: 193 78% 4%;
   }
+
   .dark {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
@@ -63,7 +68,17 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+}
+
+html,
+body {
+  overflow: auto;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }

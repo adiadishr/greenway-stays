@@ -11,7 +11,7 @@ export default {
 		extend: {
 			fontFamily: {
 				sans: ['var(--font-sans)'],
-				serif: ['var(--font-cormorant-garamond)']
+				serif: ['var(--font-serif)']
 			},
 			colors: {
 				background: 'hsl(var(--background))',

@@ -1,11 +1,24 @@
-import { Menu } from "lucide-react";
+'use client'
+
+import { useState } from "react";
+import Link from "next/link";
+import Menu from "./menu";
+import { cn } from "@/lib/utils";
 
 export default function Nav() {
+    const [nav, setNav] = useState(false);
+    const handleClick = () => {
+        setNav(!nav);
+    }
     return (
-        <nav className='bg-white/60 font-serif backdrop-blur-md border-b items-center justify-between border-accent h-[56px] fixed top-0 z-50 flex w-full'>
-            <div className="flex items-center h-full duration-500 border-r cursor-pointer border-accent group hover:bg-primary"><Menu strokeWidth={0.75} className='mx-4 group-hover:text-white' /></div>
-            <div className='absolute uppercase md:text-2xl right-1/2 translate-x-[50%]'>Greenway Stays</div>
-            <div className='flex items-center h-full px-4 uppercase duration-500 border-l cursor-pointer border-accent hover:bg-primary hover:text-white'>Book</div>
-        </nav>
+        <>
+            <Menu nav={nav} onClick={handleClick} />
+            <div className='h-[80px] justify-end flex items-center w-full fixed top-0 z-[110] px-4 md:px-[3.5%]'>
+                <div className={cn("flex items-center font-sans gap-8 tracking-tighter duration-50", nav ? "text-white md:text-black" : "text-white")}>
+                    <Link href="/booking">BOOK NOW</Link>
+                    <button onClick={handleClick}>{nav ? "Closex" : "Menu+"}</button>
+                </div>
+            </div>
+        </>
     )
 }
