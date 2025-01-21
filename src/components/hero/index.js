@@ -13,9 +13,9 @@ export default function Hero() {
     const isMobile = useIsMobile()
 
     return (
-        <div className='relative h-screen overflow-hidden'>
+        <div className='relative h-[calc(100vh-2rem)] md:h-screen max-h-screen overflow-hidden'>
             <motion.div style={{ y }} className='relative flex flex-col items-center justify-center w-full h-full'>
-                <div className="absolute left-4 z-[60] -top-4 md:-top-8 w-max">
+                <div className="absolute -left-2 z-[60] -top-8 w-max">
                     <Image
                         src="/logo-only.png"
                         alt="Logo of Greenway Stays"

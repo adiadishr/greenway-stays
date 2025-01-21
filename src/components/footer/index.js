@@ -2,6 +2,8 @@ import { links } from "@/constants"
 import { formatToRoman } from "@/utils"
 import Image from "next/image";
 import Link from "next/link"
+import BackgroundImage from "../background-image";
+import { Facebook, Instagram, MessageCircle } from "lucide-react";
 
 export default function Footer() {
     return (
@@ -45,7 +47,7 @@ export default function Footer() {
 
                 {/* Right Pane */}
                 <div className="hidden md:flex flex-col items-center justify-center w-5/12 font-sans text-black duration-1000 bg-transparent hover:w-[45%] relative">
-                    <Image fill src="/bg.png" alt='Decorative background' className='object-cover opacity-5 -z-10' />
+                    <BackgroundImage />
                     <div className="flex w-full px-16 mb-12">
                         <div className="relative w-full px-4 overflow-hidden h-80">
                             <Image
@@ -62,7 +64,17 @@ export default function Footer() {
                         <div>+421 45 530 00 00</div>
                         <div>email@email.com</div>
                     </div>
-                    <div>Social media links</div>
+                    <div className="flex items-center justify-center gap-4">
+                        <Link href="https://www.pornhub.com" className="flex items-center cursor-pointer justify-center rounded-full size-12 text-white/80 bg-neutral-900 hover:bg-neutral-800 duration-500">
+                            <Facebook />
+                        </Link>
+                        <Link href="https://www.pornhub.com" className="flex items-center cursor-pointer justify-center rounded-full size-12 text-white/80 bg-neutral-900 hover:bg-neutral-800 duration-500">
+                            <Instagram />
+                        </Link>
+                        <Link href="https://www.pornhub.com" className="flex items-center cursor-pointer justify-center rounded-full size-12 text-white/80 bg-neutral-900 hover:bg-neutral-800 duration-500">
+                            <MessageCircle />
+                        </Link>
+                    </div>
                 </div>
 
             </div>

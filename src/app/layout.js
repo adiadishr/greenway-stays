@@ -24,11 +24,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={cn(sans.variable, serif.variable, "antialiased selection:bg-primary selection:text-white")}
+        className={cn(sans.variable, serif.variable, "antialiased selection:bg-neutral-950 selection:text-white relative")}
       >
         <Nav />
-        {children}
         <LinksButton />
+        {children}
         <Footer />
       </body>
     </html>

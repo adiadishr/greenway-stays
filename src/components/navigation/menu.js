@@ -1,17 +1,17 @@
 'use client'
 
 import { links } from "@/constants";
-import { cn } from "@/lib/utils";
 import { formatToRoman } from "@/utils";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { Facebook, Instagram, MessageCircle } from "lucide-react";
 
 export default function Menu({ nav, onClick }) {
 
     const containerVariants = {
-        hidden: { opacity: 0, transition: { duration: .5 }, transitionEnd: { zIndex: -1 } },
-        visible: { opacity: 1, zIndex: 100, transition: { duration: .5 } },
+        hidden: { opacity: 0, transition: { duration: .35 }, transitionEnd: { zIndex: -1 } },
+        visible: { opacity: 1, zIndex: 100, transition: { duration: .35 } },
     };
     const leftPaneVariants = {
         hidden: { x: "-100%", transition: { duration: 0.75, ease: [0.25, 1, 0.5, 1] } },
@@ -74,9 +74,10 @@ export default function Menu({ nav, onClick }) {
                 initial={false}
                 animate={nav ? "visible" : "hidden"}
                 variants={rightPaneVariants}
-                className="flex flex-col items-center justify-center w-0 font-sans text-black bg-white md:w-5/12"
+                className="flex relative flex-col items-center justify-center w-0 invisible md:visible font-sans text-black bg-white md:w-5/12"
             >
-                <div className="flex w-full px-16 mb-12">
+                <Image fill src="/bg.png" alt='Decorative background' className='object-cover opacity-15 z-[99]' />
+                <div className="flex w-full px-16 mb-12 z-[101]">
                     <div className="relative w-full px-4 overflow-hidden h-80">
                         <Image
                             src="/uxbridge-2.jpg"
@@ -92,8 +93,18 @@ export default function Menu({ nav, onClick }) {
                     <div>+421 45 530 00 00</div>
                     <div>email@email.com</div>
                 </div>
-                <div>Social media links</div>
+                <div className="flex items-center justify-center gap-4 z-[100]">
+                    <Link href="https://www.pornhub.com" className="flex items-center cursor-pointer justify-center rounded-full size-12 text-white/80 bg-neutral-900 hover:bg-neutral-800 duration-500">
+                        <Facebook />
+                    </Link>
+                    <Link href="https://www.pornhub.com" className="flex items-center cursor-pointer justify-center rounded-full size-12 text-white/80 bg-neutral-900 hover:bg-neutral-800 duration-500">
+                        <Instagram />
+                    </Link>
+                    <Link href="https://www.pornhub.com" className="flex items-center cursor-pointer justify-center rounded-full size-12 text-white/80 bg-neutral-900 hover:bg-neutral-800 duration-500">
+                        <MessageCircle />
+                    </Link>
+                </div>
             </motion.div>
-        </motion.div>
+        </motion.div >
     );
 }
