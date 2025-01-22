@@ -1,90 +1,195 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
-import styles from './page.module.scss'
-import Image from 'next/image';
+
 import Lenis from 'lenis'
-import { useTransform, useScroll, motion } from 'framer-motion';
-import Footer from '@/components/footer';
+import { useEffect, useState } from 'react';
+import BackgroundImage from '@/components/background-image';
+import SecondaryLoader from '@/components/secondary-loader';
+import { ArrowDown } from 'lucide-react';
+import Link from 'next/link';
+import BlurFade from '@/components/ui/blur-fade';
+import Image from 'next/image';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { aux } from '@/constants';
+import AuxHero from '@/components/hero/aux-hero';
 
 const images = [
-    "exterior.png",
-    "exterior.png",
-    "exterior.png",
-    "exterior.png",
-    "exterior.png",
-    "exterior.png",
-    "exterior.png",
-    "exterior.png",
-    "exterior.png",
-    "exterior.png",
-    "exterior.png",
-    "exterior.png",
+    "/exterior.png",
+    "/stays.jpg",
+    "/uxbridge-1.jpg",
+    "/exterior.png",
+    "/exterior.png",
+    "/exterior.png",
+    "/exterior.png",
+    "/exterior.png",
+    "/exterior.png",
+    "/exterior.png",
+    "/exterior.png",
+    "/exterior.png",
 ]
 
 export default function Page() {
-
-    const gallery = useRef(null);
-    const [dimension, setDimension] = useState({ width: 0, height: 0 });
-
-    const { scrollYProgress } = useScroll({
-        target: gallery,
-        offset: ['start end', 'end start']
-    })
-    const { height } = dimension;
-    const y = useTransform(scrollYProgress, [0, 1], [0, height * 2])
-    const y2 = useTransform(scrollYProgress, [0, 1], [0, height * 3.3])
-    const y3 = useTransform(scrollYProgress, [0, 1], [0, height * 1.25])
-    const y4 = useTransform(scrollYProgress, [0, 1], [0, height * 3])
-
+    const isMobile = useIsMobile()
+    const [mounted, setMounted] = useState(false);
     useEffect(() => {
         const lenis = new Lenis()
         const raf = (time) => {
             lenis.raf(time)
             requestAnimationFrame(raf)
         }
-        const resize = () => {
-            setDimension({ width: window.innerWidth, height: window.innerHeight })
-        }
-        window.addEventListener("resize", resize)
         requestAnimationFrame(raf);
-        resize();
-        return () => {
-            window.removeEventListener("resize", resize);
-        }
+        setTimeout(() => {
+            setMounted(true)
+        }, 500)
     }, [])
 
-    return (
-        <main className={styles.main}>
-            <div className={styles.spacer}></div>
-            <div ref={gallery} className={styles.gallery}>
-                <Column images={[images[0], images[1], images[2]]} y={y} />
-                <Column images={[images[3], images[4], images[5]]} y={y2} />
-                <Column images={[images[6], images[7], images[8]]} y={y3} />
-                <Column images={[images[9], images[10], images[11]]} y={y4} />
-            </div>
-            <div className={styles.spacer}></div>
-            <Footer />
-        </main>
-    )
-}
 
-const Column = ({ images, y }) => {
-    return (
-        <motion.div
-            className={styles.column}
-            style={{ y }}
-        >
-            {
-                images.map((src, i) => {
-                    return <div key={i} className={styles.imageContainer}>
-                        <Image
-                            src={`/${src}`}
-                            alt='image'
-                            fill
-                        />
+    const { gallery } = aux;
+
+    return (<>
+        <SecondaryLoader mounted={mounted} />
+        <main className='relative text-white bg-neutral-900'>
+            <AuxHero title={gallery.title} subtitle={gallery.subtitle} />
+            <BackgroundImage />
+            <div className='bg-white'>
+                <h1 className='container px-4 py-10 mx-auto font-serif text-5xl font-light text-black md:text-7xl md:py-20'>Parking</h1>
+                <div className="container grid grid-cols-2 gap-4 px-4 pb-20 mx-auto md:grid-cols-3 md:pb-40 ">
+                    <div className="grid gap-4">
+                        <div>
+                            <img
+                                className="object-cover object-center h-auto max-w-full rounded-lg"
+                                src="https://images.unsplash.com/photo-1432462770865-65b70566d673?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80"
+                                alt="gallery-photo"
+                            />
+                        </div>
+                        <div>
+                            <img
+                                className="object-cover object-center h-auto max-w-full rounded-lg "
+                                src="https://images.unsplash.com/photo-1629367494173-c78a56567877?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=927&amp;q=80"
+                                alt="gallery-photo"
+                            />
+                        </div>
+                        <div>
+                            <img
+                                className="object-cover object-center h-auto max-w-full rounded-lg"
+                                src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=2940&amp;q=80"
+                                alt="gallery-photo"
+                            />
+                        </div>
                     </div>
-                })
-            }
-        </motion.div>
-    )
+                    <div className="grid gap-4">
+                        <div>
+                            <img
+                                className="object-cover object-center h-auto max-w-full rounded-lg"
+                                src="https://images.unsplash.com/photo-1552960562-daf630e9278b?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=687&amp;q=80"
+                                alt="gallery-photo"
+                            />
+                        </div>
+                        <div>
+                            <img
+                                className="object-cover object-center h-auto max-w-full rounded-lg"
+                                src="https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80"
+                                alt="gallery-photo"
+                            />
+                        </div>
+                        <div>
+                            <img
+                                className="object-cover object-center h-auto max-w-full rounded-lg "
+                                src="https://docs.material-tailwind.com/img/team-3.jpg"
+                                alt="gallery-photo"
+                            />
+                        </div>
+                    </div>
+                    <div className="grid gap-4">
+                        <div>
+                            <img
+                                className="object-cover object-center h-auto max-w-full rounded-lg"
+                                src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=2940&amp;q=80"
+                                alt="gallery-photo"
+                            />
+                        </div>
+                        <div>
+                            <img
+                                className="object-cover object-center h-auto max-w-full rounded-lg "
+                                src="https://docs.material-tailwind.com/img/team-3.jpg"
+                                alt="gallery-photo"
+                            />
+                        </div>
+                        <div>
+                            <img
+                                className="object-cover object-center h-auto max-w-full rounded-lg"
+                                src="https://images.unsplash.com/photo-1552960562-daf630e9278b?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=687&amp;q=80"
+                                alt="gallery-photo"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <h1 className='container px-4 pb-10 mx-auto font-serif text-5xl font-light text-black md:text-7xl md:pb-20'>Parking</h1>
+                <div className="container grid grid-cols-2 gap-4 px-4 pb-20 mx-auto md:grid-cols-3 md:pb-40 ">
+                    <div className="grid gap-4">
+                        <div>
+                            <img
+                                className="object-cover object-center h-auto max-w-full rounded-lg"
+                                src="https://images.unsplash.com/photo-1552960562-daf630e9278b?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=687&amp;q=80"
+                                alt="gallery-photo"
+                            />
+                        </div>
+                        <div>
+                            <img
+                                className="object-cover object-center h-auto max-w-full rounded-lg"
+                                src="https://images.unsplash.com/photo-1629367494173-c78a56567877?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=927&amp;q=80"
+                                alt="gallery-photo"
+                            />
+                        </div>
+                    </div>
+                    <div className="grid gap-4">
+                        <div>
+                            <img
+                                className="object-cover object-center h-auto max-w-full rounded-lg"
+                                src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=2940&amp;q=80"
+                                alt="gallery-photo"
+                            />
+                        </div>
+                        <div>
+                            <img
+                                className="object-cover object-center h-auto max-w-full rounded-lg "
+                                src="https://docs.material-tailwind.com/img/team-3.jpg"
+                                alt="gallery-photo"
+                            />
+                        </div>
+                        <div>
+                            <img
+                                className="object-cover object-center h-auto max-w-full rounded-lg"
+                                src="https://images.unsplash.com/photo-1552960562-daf630e9278b?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=687&amp;q=80"
+                                alt="gallery-photo"
+                            />
+                        </div>
+                    </div>
+                    <div className="grid gap-4">
+                        <div>
+                            <img
+                                className="object-cover object-center h-auto max-w-full rounded-lg"
+                                src="https://images.unsplash.com/photo-1552960562-daf630e9278b?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=687&amp;q=80"
+                                alt="gallery-photo"
+                            />
+                        </div>
+                        <div>
+                            <img
+                                className="object-cover object-center h-auto max-w-full rounded-lg"
+                                src="https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80"
+                                alt="gallery-photo"
+                            />
+                        </div>
+                        <div>
+                            <img
+                                className="object-cover object-center h-auto max-w-full rounded-lg "
+                                src="https://docs.material-tailwind.com/img/team-3.jpg"
+                                alt="gallery-photo"
+                            />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </>)
 }

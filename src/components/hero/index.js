@@ -1,6 +1,7 @@
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useScroll, useTransform, motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRef } from 'react';
 
 export default function Hero() {
@@ -26,16 +27,16 @@ export default function Hero() {
                 </div>
                 <Image src='/stays.jpg' alt='sky' fill className='-z-10 absolute object-cover object-center inset-0 brightness-[.55] selection:bg-transparent' />
                 <div className='relative translate-y-8'>
-                    <div className='max-w-screen-md mb-4 font-serif text-5xl text-center text-white md:text-7xl'>
+                    <div className='max-w-screen-md mb-4 font-serif text-5xl text-center font-light text-white md:text-7xl'>
                         Experience the <span className='italic'>finest</span> hospitality
                     </div>
                     <div className='mx-auto font-sans text-base font-light tracking-tighter text-center md:text-xl text-white/70'>
                         Accommodations and Personalized Hospitality, <br /> Uxbridge, West London
                     </div>
                 </div>
-                <div className="absolute p-2 font-sans text-base font-light tracking-tight text-center duration-500 border-b cursor-pointer border-white/80 md:text-xl text-white/70 bottom-8 group hover:text-white/90 hover:border-white">
+                <Link href="/booking" className="absolute p-2 font-sans text-base font-light tracking-tight text-center duration-500 border-b cursor-pointer border-white/80 md:text-xl text-white/70 bottom-8 group hover:text-white/90 hover:border-white">
                     Check Availability
-                </div>
+                </Link>
             </motion.div>
         </div>
     )
